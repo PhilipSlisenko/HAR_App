@@ -1,9 +1,32 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>
-      Tab Two
+      Record Data
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content></ion-content>
+<ion-content>
+  <ion-item>
+    <ion-label>Chose User</ion-label>
+    <ion-select [(ngModel)]="chosenUser" (ionChange)="updateReadyToRecord()">
+      <ion-select-option *ngFor="let user of users" [value]="user.id">{{user.name}}</ion-select-option>
+    </ion-select>
+  </ion-item>
+  <p>user {{ chosenUser }}</p>
+  <p>num: {{ num }}</p>
+    <ion-item>
+      <ion-label>Chose Activity</ion-label>
+      <ion-select [(ngModel)]="chosenActivity" (ionChange)="updateReadyToRecord()">
+        <ion-select-option *ngFor="let activity of activities" [value]="activity.id">{{activity.name}}</ion-select-option>
+      </ion-select>
+    </ion-item>
+  <ion-button *ngIf="readyToRecord" (click)="startRecodring()" color="success" expand="block" size="large"
+    shape="round">Start Recording
+  </ion-button>
+  <ion-button *ngIf="recordingStarted" (click)="stopRecording()" color="danger" expand="block" size="large"
+    shape="round">Stop
+    Recording
+  </ion-button>
+  <p>{{recordingData}}</p>
+</ion-content>

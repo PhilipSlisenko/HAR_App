@@ -10,16 +10,20 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import { DeviceMotion, DeviceMotionAccelerationData } from '@ionic-native/device-motion/ngx';
+import { File } from '@ionic-native/file/ngx';
+import { IonicStorageModule } from '@ionic/storage';
+import { Device } from '@ionic-native/device/ngx';
 
 @NgModule({
 	declarations: [ AppComponent ],
 	entryComponents: [],
-	imports: [ BrowserModule, IonicModule.forRoot(), AppRoutingModule ],
+	imports: [ BrowserModule, IonicModule.forRoot(), AppRoutingModule, IonicStorageModule.forRoot() ],
 	providers: [
 		StatusBar,
 		SplashScreen,
 		DeviceMotion,
-		//DeviceMotionAccelerationData,
+		File,
+		Device,
 		{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
 	],
 	bootstrap: [ AppComponent ]
