@@ -13,7 +13,7 @@ export class AccelerationService {
 	startAccelerationTracking(frequency: number = 20) {
 		this.accelerometerObservable = this.deviceMotion.watchAcceleration({ frequency });
 	}
-	getAccelerometerObservable() {
-		return this.accelerometerObservable;
+	getAccelerometerObservable(frequency: number = 20) {
+		return this.deviceMotion.watchAcceleration({ frequency });
 	}
 }
